@@ -9,6 +9,7 @@ server.listen(process.env.PORT, process.env.IP);
 app.get('/', function(req, res) {
     res.sendfile(__dirname + '/index.html');
 });
+
 io.sockets.on('connection', function(socket) {
     socket.on('send message', function(data) {
         io.sockets.emit('new message', {msg: data, nick: socket.nickname});
